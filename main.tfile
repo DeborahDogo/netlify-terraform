@@ -1,0 +1,23 @@
+terraform {
+ provider {
+  netlify = {
+   source = "netlify/netlify"
+   version = "0.2.0"
+   }
+  }
+
+  backend "remote" {organization = "Debs-org"
+  workspaces {name = "netlify-site"
+    }
+   }
+  }
+provider "netlify" {
+token = Debs_netlify_TOKEN"
+}
+resource"netlify_site"{
+name = "Debs-terraform-netlify-site"
+output "netlify_site_url" {
+  description = "Netlify site live url"
+  value       = netlify_site.example.ssl_url
+  }
+
