@@ -15,7 +15,13 @@ provider "netlify" {
 token = Debs_netlify_TOKEN"
 }
 resource"netlify_site"{
-name = "Debs-terraform-netlify-site"
+  name = "Debs-terraform-netlify-site"
+repo {
+  repo_url = "https://github.com/DeborahDogo/netlify-terraform-site"
+  repo_branch = "main"
+  }
+}
+
 output "netlify_site_url" {
   description = "Netlify site live url"
   value       = netlify_site.example.ssl_url
