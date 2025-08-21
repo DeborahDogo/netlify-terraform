@@ -1,29 +1,30 @@
 terraform {
- provider {
+ required_providers {
   netlify = {
    source = "netlify/netlify"
    version = "0.2.0"
    }
   }
+ }
 
   backend "remote" {organization = "Debs-org"
   workspaces {name = "netlify-site"
     }
    }
-  }
+ 
 provider "netlify" {
-token = Debs_netlify_TOKEN"
+token = "Debs_netlify_TOKEN"
 }
-resource"netlify_site"{
-  name = "Debs-terraform-netlify-site"
+resource "netlify_site" "mysite" {
+  name = "my-terraform-site-demo"
+}
+
+resource "netlify_deploy" "deploy" {
+  site_id = netlify_site.mysite.id
+  dir     = "${path.module}/site"
+}
 repo {
   repo_url = "https://github.com/DeborahDogo/netlify-terraform-site"
   repo_branch = "main"
-  }
-}
-
-output "netlify_site_url" {
-  description = "Netlify site live url"
-  value       = netlify_site.example.ssl_url
   }
 
