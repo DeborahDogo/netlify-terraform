@@ -1,1 +1,0 @@
-netlify_token = "nfp_QnkArgKaorjRZihyX8mm6nqsrCTQkEvu4fc1"
